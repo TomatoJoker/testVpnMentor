@@ -132,7 +132,7 @@ exports.styleMin = styleMin;
 // const styleLibs = () => {
 //   return gulp.src(
 //       [
-//         './node_modules/@fancyapps/fancybox/dist/jquery.fancybox.css',
+//         './node_modules/@fontawesome/fontawesome-free/css/all.min.css',
 //       ]
 //   )
 //       .pipe(cleanCSS())

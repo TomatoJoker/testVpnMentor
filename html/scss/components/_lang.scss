@@ -1,0 +1,120 @@
+.lang {
+  position: relative;
+
+  &__active-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: $light;
+    text-transform: uppercase;
+    @include transition($property: color);
+
+    @include hover {
+      color: $primary;
+    }
+
+    i {
+      font-size: 10px;
+      @include transition($property: transform);
+      position: relative;
+      top: -2px;
+
+      @include min-media($desktop) {
+        color: $primary;
+      }
+    }
+
+    @include min-media($desktop) {
+      color: $dark;
+    }
+
+    &--active {
+
+      i {
+        transform: scaleY(-1);
+      }
+
+    }
+  }
+
+  &__list {
+    top: calc(100% + 24px);
+    position: absolute;
+    z-index: 100;
+    right: 0;
+    background: $light;
+    box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+    overflow: hidden;
+    grid-auto-flow: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(159px, 1fr));
+    grid-template-rows: repeat(14, auto);
+    grid-auto-columns: 159px;
+    opacity: 0;
+    transform: scale(0);
+    @include multi-transition(visibility, opacity, transform);
+    transform-origin: top right;
+
+    @include min-media($desktop) {
+      top: calc(100% + 34px);
+      grid-template-rows: repeat(10, auto);
+    }
+
+    &--open {
+      visibility: visible;
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      border-left: 18px solid transparent;
+      border-right: 18px solid transparent;
+      border-bottom: 11px solid $light;
+      left: calc(93% - 18px);
+    }
+  }
+
+  &__item {
+
+    &:not(:nth-child(14 + n)) {
+
+      @include media($desktop) {
+        a {
+          border-right: 1px solid $silver;
+        }
+      }
+
+    }
+  }
+
+  &:not(:nth-child(24 + n)) {
+
+    @include min-media($desktop) {
+
+      a {
+        border-right: 1px solid $silver;
+      }
+
+    }
+  }
+
+
+    a {
+      color: $primary;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      border-right: 1px solid $silver;
+      @include transition($property: background);
+      padding: 11px 16px;
+
+      @include hover {
+        background: $accent;
+      }
+  }
+
+}

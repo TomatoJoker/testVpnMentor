@@ -1,3 +1,9 @@
 /*--------- font-face ---------*/
 //@mixin font($weight, $style, $fontName, $fileName, $folderName: $fontName)
-@include font(400, normal, 'DMSans', 'DMSans-Regular');
+@include font(900, normal, 'Montserrat', 'Montserrat-Black');
+@include font(800, normal, 'Montserrat', 'Montserrat-ExtraBold');
+@include font(600, normal, 'Montserrat', 'Montserrat-SemiBold');
+@include font(500, normal, 'Montserrat', 'Montserrat-Medium');
+@include font(400, normal, 'Montserrat', 'Montserrat-Regular');
+@include font(300, normal, 'Montserrat', 'Montserrat-Light');
+@include font(200, normal, 'Montserrat', 'Montserrat-ExtraLight');

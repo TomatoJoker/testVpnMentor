@@ -1,20 +1,21 @@
 // Colors
 $light: #fff;
-$dark: #000;
-$transparent: rgba(255, 255, 255, 0);
-$primary: #ffa900;
+$dark: #333;
+$silver: #e7eaee;
+$primary: #173967;
+$accent: #e8f8ff;
 
 $speed: 300ms;
 $time-function: ease-in-out;
 
+$desktop: 1200;
+
 :root {
-  --speed: #{$speed};
-  --time-function: #{$time-function};
   --vh: 1vh;
 }
 
 //layout
-$padding: 20px;
-$desktop-width: 1642px;
+$padding: 10px;
+$desktop-width: 1168px;
 $site-container: $desktop-width + ($padding * 2);
 

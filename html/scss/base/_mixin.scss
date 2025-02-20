@@ -121,6 +121,18 @@
   height: $height + px;
 }
 
+@mixin mt($value) {
+  &:not(:first-child) {
+    margin-top: $value;
+  }
+}
+
+@mixin mb($value) {
+  &:not(:last-child) {
+    margin-bottom: $value;
+  }
+}
+
 @mixin total-width($width) {
   min-width: $width + px;
   max-width: $width + px;
@@ -354,12 +366,4 @@
   opacity: 1;
   pointer-events: auto;
   visibility: visible;
-}
-
-%card-row {
-  display: flex;
-  flex-direction: column;
-  @include min-media(1200) {
-    flex-direction: row;
-  }
 }

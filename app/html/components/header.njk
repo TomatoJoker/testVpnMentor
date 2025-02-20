@@ -1,9 +1,133 @@
-{% import "components/menu.njk" as macros %}
-{% set menu = macros.menu %}
-{% set menuData = ['Shop', 'About'] %}
+{% set menuData = [
+    {title: 'Blog'},
+    {title: 'Best VPN', child: true},
+    {title: 'Tools', child: true},
+    {title: 'Coupons', child: true},
+    {title: 'Reviews', child: true},
+    {title: 'Guides', child: true},
+    {title: 'News'}
+] %}
 
-<header>
-    <div class="container">
-        {{ menu(menuData) }}
+{% set subMenu = [
+    {
+        title: 'Best VPN Overall',
+        class: 'fa-flag-usa'
+    },
+    {
+        title: 'Best VPNs for Torrents',
+        class: 'fa-flag-usa'
+    },
+    {
+        title: 'Best VPNs for Windows',
+        class: 'fa-flag-usa'
+    },
+    {
+        title: 'Best VPNs for Android',
+        class: 'fa-flag-usa'
+    },
+    {
+        title: 'Best VPNs for Mac',
+        class: 'fa-flag-usa'
+    },
+    {
+        title: 'Best VPNs for iOS',
+        class: 'fa-flag-usa'
+    },
+    {
+        title: 'Best VPNs for USA',
+        class: 'fa-flag-usa'
+    }
+] %}
+
+<header class="header">
+    <div class="header__container--mob container">
+        <div class="header__container--desktop header__row container">
+            <a class="header__logo" href="#">
+                <picture>
+                    <source srcset="./images/logo.svg" media="(min-width: 1200px)"/>
+                    <img width="147" height="37" src="./images/logo-light.svg" alt="Фотографія"/>
+                </picture>
+            </a>
+            <div class="header__search-wrapper">
+                <button type="button" class="header__search-btn-toggle btn-full-reset">
+                    <i class="fa fa-search"></i>
+                    Search
+                </button>
+                <form class="header__search header__search--desktop input input--small" action="">
+                    <input type="text">
+                    <button class="header__search-btn btn-full-reset" aria-expanded="false">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
+                </form>
+            </div>
+            <div class="header__lang lang">
+                <button type="button" class="lang__active-item btn-full-reset" aria-expanded="false"
+                        aria-controls="lang">
+                    <img src="./images/flag/english.svg" alt="en" width="16" height="16">
+                    en
+                    <i class="fa fa-chevron-down"></i>
+                </button>
+                <ul class="lang__list" id="lang">
+                    {% for i in range(0, 27) %}
+                        <li class="lang__item">
+                            <a href="#">
+                                <img src="./images/flag/danish.svg" width="16" height="16" alt="danish">
+                                Danish
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <button class="header__burger btn-full-reset" aria-label="burger menu button" aria-expanded="false"
+                    aria-controls="dataNav" r
+                    type="button">
+                <div class="header__burger-wrapper">
+                    <span></span>
+                </div>
+            </button>
+        </div>
+        <nav class="header__nav">
+            <div class="container">
+                <div class="header__menu" id="dataNav">
+                    <form class="header__search header__search--mob input" action="">
+                        <input type="text" placeholder="search"/>
+                        <button class="header__search-btn btn-full-reset" aria-expanded="false">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </form>
+                    <ul class="header__menu-list">
+                        {% for menuItem in menuData %}
+                            <li class="header__menu-item">
+                                <a class="header__menu-link" aria-expanded="false" href="#">
+                                    {{ menuItem.title }}
+                                    {% if menuItem.child %}
+                                        <i class="fa fa-chevron-down"></i>
+                                    {% endif %}
+                                </a>
+                                {% if menuItem.child %}
+                                    <div class="header__sub-menu">
+                                        {% for i in range(0, 4) %}
+                                            <div class="header__sub-menu-col">
+                                                <h3 class="header__sub-menu-title">Popular</h3>
+                                                <ul class="header__sub-menu-list">
+                                                    {% for subItem in subMenu %}
+                                                        <li class="header__sub-menu-item">
+                                                            <a href="#">
+                                                                <i class="fa {{ subItem.class }}"></i>
+                                                                {{ subItem.title }}
+                                                            </a>
+                                                        </li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </div>
 </header>
