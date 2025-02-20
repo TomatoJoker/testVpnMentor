@@ -2,6 +2,7 @@
   position: relative;
 
   &__active-item {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 5px;
@@ -28,10 +29,19 @@
       color: $dark;
     }
 
+
     &--active {
 
       i {
         transform: scaleY(-1);
+      }
+
+      @include min-media($desktop) {
+        color: $light !important;
+
+        i {
+          color: $light;
+        }
       }
 
     }
@@ -40,7 +50,6 @@
   &__list {
     top: calc(100% + 24px);
     position: absolute;
-    z-index: 100;
     right: 0;
     background: $light;
     box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.25);
@@ -51,10 +60,11 @@
     grid-template-columns: repeat(auto-fit, minmax(159px, 1fr));
     grid-template-rows: repeat(14, auto);
     grid-auto-columns: 159px;
-    opacity: 0;
     transform: scale(0);
     @include multi-transition(visibility, opacity, transform);
     transform-origin: top right;
+
+    @extend %is-hidden;
 
     @include min-media($desktop) {
       top: calc(100% + 34px);
@@ -62,9 +72,10 @@
     }
 
     &--open {
-      visibility: visible;
-      opacity: 1;
+      @extend %is-visible;
       transform: scale(1);
+
+      @include background-layer-open;
     }
 
     &:before {
@@ -76,6 +87,11 @@
       border-bottom: 11px solid $light;
       left: calc(93% - 18px);
     }
+  }
+
+  &__active-item,
+  &__list {
+    z-index: 999;
   }
 
   &__item {
