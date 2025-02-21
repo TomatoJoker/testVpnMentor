@@ -213,7 +213,7 @@
       position: absolute;
       right: 0;
       top: 50%;
-      @include transformY-center;
+      @include absolute-centerY;
       @include multi-transition(max-width, visibility, opacity);
 
       &:not(.header__search--open) {
