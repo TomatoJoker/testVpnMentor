@@ -75,7 +75,13 @@
       @extend %is-visible;
       transform: scale(1);
 
-      @include background-layer-open;
+      body:has( & ) {
+
+        .wrapper:before {
+          @extend %is-visible;
+        }
+
+      }
     }
 
     &:before {
@@ -119,18 +125,18 @@
   }
 
 
-    a {
-      color: $primary;
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      border-right: 1px solid $silver;
-      @include transition($property: background);
-      padding: 11px 16px;
+  a {
+    color: $primary;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    border-right: 1px solid $silver;
+    @include transition($property: background);
+    padding: 11px 16px;
 
-      @include hover {
-        background: $accent;
-      }
+    @include hover {
+      background: $accent;
+    }
   }
 
 }

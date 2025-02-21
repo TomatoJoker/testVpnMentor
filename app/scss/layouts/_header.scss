@@ -159,7 +159,13 @@
       visibility: visible;
       transform: scale(1);
 
-      @include background-layer-open;
+      body:has( & ) {
+
+        .wrapper:before {
+          @extend %is-visible;
+        }
+
+      }
     }
   }
 
@@ -209,10 +215,10 @@
       top: 50%;
       @include transformY-center;
       @include multi-transition(max-width, visibility, opacity);
-    }
 
-    &:not(&--open) {
-      max-width: 0;
+      &:not(.header__search--open) {
+        max-width: 0;
+      }
     }
 
     &--open {

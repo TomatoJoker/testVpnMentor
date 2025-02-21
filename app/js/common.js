@@ -49,13 +49,12 @@ if (window.innerWidth < 1200) {
 
 const searchWrapper = document.querySelector('.header__search-wrapper'),
     headerSearchDesktop = document.querySelector('.header__search--desktop');
+
 searchWrapper.addEventListener('click', (ev) => {
-    .classList.add('');
     headerSearchDesktop.classList.add('header__search--open');
 })
 document.addEventListener('click', (ev) => {
     if (!searchWrapper.contains(ev.target)) {
-        searchBtnToggle.classList.remove('.header__search-btn-toggle');
         headerSearchDesktop.classList.remove('header__search--open');
     }
 });
